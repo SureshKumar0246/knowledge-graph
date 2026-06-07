@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://xmlns.com/foaf/0.1/"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           elementFormDefault="qualified">
+
+  <xs:import namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#" schemaLocation="schema.xsd"/>
+
+  <xs:element name="knows">
+    <xs:complexType>
+      <xs:attribute ref="rdf:resource" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

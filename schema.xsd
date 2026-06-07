@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:ex="http://example.org/ns#"
+           xmlns:foaf="http://xmlns.com/foaf/0.1/"
+           elementFormDefault="qualified">
+
+  <!-- Import other namespaces -->
+  <xs:import namespace="http://example.org/ns#" schemaLocation="ex.xsd"/>
+  <xs:import namespace="http://xmlns.com/foaf/0.1/" schemaLocation="foaf.xsd"/>
+
+  <!-- Attribute definition for rdf:resource and rdf:about -->
+  <xs:attribute name="about" type="xs:anyURI"/>
+  <xs:attribute name="resource" type="xs:anyURI"/>
+
+  <xs:element name="RDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Description" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+              <!-- rdf:type -->
+              <xs:element name="type">
+                <xs:complexType>
+                  <xs:attribute ref="rdf:resource" use="required"/>
+                </xs:complexType>
+              </xs:element>
+              <!-- Elements from ex: namespace -->
+              <xs:element ref="ex:studentOf"/>
+              <xs:element ref="ex:studies"/>
+              <xs:element ref="ex:worksAt"/>
+              <!-- Elements from foaf: namespace -->
+              <xs:element ref="foaf:knows"/>
+            </xs:choice>
+            <xs:attribute ref="rdf:about" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
